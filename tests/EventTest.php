@@ -161,7 +161,9 @@ final class EventTest extends TestCase
     public function testLogShortRequest(): void
     {
         $httpClientStub = new HttpClientStub();
-        $this->createClient($httpClientStub)->log(
+        $client = $this->createClient($httpClientStub);
+        $requestTime = new \DateTimeImmutable();
+        $client->log(
             self::$fullEventData['user_id'],
             self::$fullEventData['event_type'],
             self::$fullEventData['event_properties'],
@@ -175,7 +177,7 @@ final class EventTest extends TestCase
         $expectedRequestData = array_intersect_key(
             self::$fullEventData,
             array_flip(['user_id', 'event_type', 'event_properties', 'user_properties'])
-        ) + ['time' => (new \DateTimeImmutable())->format('Uv')];
+        ) + ['time' => $requestTime->format('Uv')];
 
         $this->assertEquals($expectedRequestData, json_decode($requestParams['event'], true));
     }
@@ -183,7 +185,9 @@ final class EventTest extends TestCase
     public function testShortRequestNoUserId(): void
     {
         $httpClientStub = new HttpClientStub();
-        $this->createClient($httpClientStub)->log(
+        $client = $this->createClient($httpClientStub);
+        $requestTime = new \DateTimeImmutable();
+        $client->log(
             null,
             self::$fullEventData['event_type'],
             self::$fullEventData['event_properties'],
@@ -197,7 +201,7 @@ final class EventTest extends TestCase
         $expectedRequestData = array_intersect_key(
             self::$fullEventData,
             array_flip(['event_type', 'event_properties', 'user_properties', 'device_id'])
-        ) + ['time' => (new \DateTimeImmutable())->format('Uv')];
+        ) + ['time' => $requestTime->format('Uv')];
 
         $this->assertEquals($expectedRequestData, json_decode($requestParams['event'], true));
     }
