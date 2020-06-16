@@ -25,5 +25,11 @@
   },
   "require-dev": {
     "phpunit/phpunit": ">=8.0"
+  },
+  "scripts": {
+    "test": [
+      "@composer install --ignore-platform-reqs --ansi",
+      "vendor/bin/phpunit --stop-on-failure tests"
+    ]
   }
 }
