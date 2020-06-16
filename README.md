@@ -19,7 +19,7 @@ composer require srkt/amplitude-php
 ```
 
 ## Examples
-There are different types of library usages: from simple "one method call" to full featured OOP styled one.
+There are two types of library usage: simple "one method call" and full featured OOP styled one.
 ### Event tracking
 #### Create client
 ```php
