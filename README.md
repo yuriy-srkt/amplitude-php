@@ -1,4 +1,5 @@
 # Amplitude PHP SDK
+![PHP Composer](https://github.com/yuriy-srkt/amplitude-php/workflows/PHP%20Composer/badge.svg?branch=master)
 
 Multifunctional [Amplitude](https://amplitude.com/) REST API PHP SDK with PSR-7 and PSR-18 support (HTTP Request, Response and Client interfaces).
 
